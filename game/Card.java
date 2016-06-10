@@ -1,9 +1,13 @@
 package game;
 
+import javafx.scene.canvas.GraphicsContext;
+
 public class Card{
 
     private int points;//amount of bulls
     private int value;
+    private int x; //x-coordinate on Surface
+    private int y; // y-coordinate on Surface
 
     public Card(int value){
 
@@ -25,6 +29,10 @@ public class Card{
 //        System.out.println(points);
     }
 
+    public void draw(GraphicsContext g){
+        //Example
+        g.fillRect(x, y, 20D, 80D);
+    }
     public int getPoints(){
         return this.points;
     }
