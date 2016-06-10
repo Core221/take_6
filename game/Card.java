@@ -5,8 +5,7 @@ public class Card{
     private int points;
     private int value;
 
-    public Card(int value, int points){
-        this.points = points;
+    public Card(int value){
         this.value = value;
     }
 
