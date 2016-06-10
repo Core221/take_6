@@ -2,24 +2,24 @@ package game;
 
 public class Card{
 
-    private String colour;
+    private int points;
     private int value;
 
-    public Card(String colour, int value){
-        this.colour = colour;
+    public Card(int value, int points){
+        this.points = points;
         this.value = value;
     }
 
-    public String getColour(){
-        return this.colour;
+    public int getPoints(){
+        return this.points;
     }
 
     public int getValue(){
         return this.value;
     }
 
-    public void setColour(String colour){
-        this.colour = colour;
+    public void setPoints(int points){
+        this.points = points;
     }
 
     public void setValue(int value){
