@@ -30,9 +30,15 @@ public class TakeSix extends Application{
         }
         surface.initialTable(initialCards);
         // Add Players to Game
+        Card[][] playerHand= new Card[player][10];
         for(int i= 0; i< this.player; i++){
-
+           for(int j=0; j<10; j++){
+               int rnd = (int)(Math.random() * (100-(i+j)));
+               playerHand[i][j] = stable.get(rnd);
+               stable.remove(rnd);
+           }
         }
+        surface.addPlayers(playerHand);
     }
 
     @Override
