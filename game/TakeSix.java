@@ -15,6 +15,13 @@ public class TakeSix extends Application{
      * Constructor for Game TakeSix
      */
     public TakeSix(){
+        /*Example Values*/
+        this.player = 4; //Just a example
+        this.nickNames = new String[4];
+        for(int i=0; i<4; i++){
+            this.nickNames[i] = "Player "+ i;
+        }
+        /*=================*/
         //Create a stable
         stable = new ArrayList<Card>();
         for(int i=0; i<104; i++){
@@ -28,15 +35,32 @@ public class TakeSix extends Application{
         for(int i= 0; i< this.player; i++){
             surface.addPlayers(this.nickNames[i],rndCards(10));
         }
+
+        /* Ausgabe des Startzustandes*/
+        System.out.printf("The Start Situation:\n");
+        surface.toDraw();
+
         // Play the game    ->(Jet just 1 Round)
 
         Card[] choosenCards = new Card[this.player];
-        for(int i=0; i< this.player; i++){
+        for(int i=0; i< this.player; i++) {
             /*Hier müsste die Kartenauswahl statt finden*/
-            choosenCards[i]= surface.getPlayers()[i].getCards()[0];     //Sind nur Beispiel Karten!!
-
+            int decision = 9;
+            /*======*/
+            Card cardOfPlayer= surface.getPlayers().get(i).getCards().get(decision); //Sind nur Beispiel Karten!!
+            surface.getPlayers().get(i).getCards().remove(decision);
+            surface.getPlayers().get(i).setCards(surface.getPlayers().get(i).getCards());
+            choosenCards[i] = cardOfPlayer;
         }
-        surface.setTable(Function.playCards(surface.getTable(),choosenCards));  //update the current table in surface
+        // Evaluate the position of Cards on table
+        Function.playCards(surface.getTable(),surface.getPlayers(),choosenCards);
+        //Update functions to refresh table and stats
+        surface.setTable(Function.updateTable());
+        surface.setPlayers(Function.updatePlayers());
+
+        /*Ausgabe nach erster Runde*/
+        System.out.printf("\n\nRound 1:\n");
+        surface.toDraw();
 
     }
 
@@ -71,13 +95,7 @@ public class TakeSix extends Application{
         Scene scene = new Scene(layout, 400,400);
 
         primaryStage.setScene(scene);
-        primaryStage.show();
-        /* You can choose an amount of Players*/
+       // primaryStage.show();
 
-        this.player = 4; //Just a example
-        this.nickNames = new String[this.player];
-        for(int i=0; i<player; i++){
-            this.nickNames[i] = "Player "+ i;
-        }
     }
 }

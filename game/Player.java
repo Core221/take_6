@@ -36,14 +36,10 @@ public class Player {
 
     /**
      * Getter for handCards of Player
-     * @return  the handCards in form of an Array
+     * @return  ArrayList of Cards
      */
-    public Card[] getCards(){
-        Card[] cards= new Card[hand_cards.size()];
-        for(int i=0; i< hand_cards.size(); i++){
-            cards[i]= hand_cards.get(i);
-        }
-        return cards;
+    public ArrayList<Card> getCards(){
+        return this.hand_cards;
     }
 
     /**
@@ -66,12 +62,8 @@ public class Player {
      * Setter for hand_cards
      * @param cards
      */
-    public void setCards(Card[] cards){
-        ArrayList<Card> handCards= new ArrayList<Card>();
-        for(int i=0; i< cards.length; i++){
-            handCards.add(cards[i]);
-        }
-        this.hand_cards= handCards;
+    public void setCards(ArrayList<Card> cards){
+        this.hand_cards= cards;
     }
 
     /**

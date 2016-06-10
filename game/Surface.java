@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Surface{
     private ArrayList<ArrayList<Card>> table;
-    private Player[] players;
+    private ArrayList<Player> players;
 
     /**
      * Constructor for Surface with components:
@@ -13,7 +13,7 @@ public class Surface{
      */
     public Surface(int amountOfPlayer){
         table = new ArrayList<ArrayList<Card>>();
-        players= new Player[amountOfPlayer];
+        players= new ArrayList<Player>();
     }
 
     /**
@@ -36,8 +36,26 @@ public class Surface{
      * @param cards
      */
     public void addPlayers(String name, ArrayList<Card> cards){
-        for(int i=0; i<players.length; i++){
-            players[i] = new Player(name, cards);
+            players.add(new Player(name, cards));
+    }
+
+    /**
+     * Draw the Surface new
+     */
+    public void toDraw(){       //Momentan nur ne Konsolenausgabe
+        System.out.printf("Table: \n");
+        for(int i=0; i<table.size(); i++){
+            for(int j=0; j<table.get(i).size(); j++){
+                System.out.printf(table.get(i).get(j).getValue()+"  ");
+            }
+            System.out.printf("\n");
+        }
+
+        for(int i=0; i<players.size(); i++){
+            System.out.print("\n"+ players.get(i).getName() + ", Bulls: " + players.get(i).getBulls()+"\n");
+            for(int j=0; j<players.get(i).getCards().size(); j++){
+                System.out.printf(players.get(i).getCards().get(j).getValue()+", ");
+            }
         }
     }
 
@@ -52,7 +70,11 @@ public class Surface{
         return table;
     }
 
-    public Player[] getPlayers(){
+    /**
+     * Getter for players
+     * @return  player acc
+     */
+    public ArrayList<Player> getPlayers(){
         return this.players;
     }
 
@@ -62,5 +84,13 @@ public class Surface{
      */
     public void setTable(ArrayList<ArrayList<Card>> table){
         this.table= table;
+    }
+
+    /**
+     * Setter for players
+     * @param players
+     */
+    public void setPlayers(ArrayList<Player> players){
+        this.players= players;
     }
 }
