@@ -1,4 +1,3 @@
-// WIR SIND DIE GEILSTEN!!!
 
 public class Main{
 
