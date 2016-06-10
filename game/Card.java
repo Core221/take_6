@@ -13,7 +13,6 @@ public class Card{
         points = 1;
         if(doubles.length()==1){
             if(doubles.charAt(0)=='5')points=2;
-
         }
         else if(doubles.length()==2) {
             if(doubles.charAt(1)=='5')points=2;
