@@ -6,6 +6,7 @@ import java.util.ArrayList;
 /**
  * Created by jbuer on 10.06.2016.
  */
+
 public class Player {
     private String name;
     private ArrayList<Card> hand_cards;
@@ -16,11 +17,9 @@ public class Player {
      * @param name
      * @param cards
      */
-    public Player(String name, Card[] cards){
+    public Player(String name, ArrayList<Card> cards){
         this.name = name;
-        for(int i=0; i<cards.length; i++){
-            hand_cards.add(cards[i]);
-        }
+        hand_cards= cards;
         bulls = 0;
         
     }

@@ -46,11 +46,11 @@ public class TakeSix extends Application{
      * @param amount    wished amount of cards
      * @return Array of cards
      */
-    public Card[] rndCards(int amount){
-        Card[] cards = new Card[amount];
+    public ArrayList<Card> rndCards(int amount){
+        ArrayList<Card> cards = new ArrayList<Card>();
         for(int i=0; i<amount; i++){
             int rnd = (int)(Math.random() * (stable.size()-i));
-            cards[i] = stable.get(rnd);
+            cards.add(stable.get(rnd));
             stable.remove(rnd);
         }
         return cards;
@@ -74,10 +74,10 @@ public class TakeSix extends Application{
         primaryStage.show();
         /* You can choose an amount of Players*/
 
-        this.player=4; //Just a example
-        nickNames = new String[this.player];
-        for(int i=0;i<player;i++){
-            nickNames[i]= "Player "+i;
+        this.player = 4; //Just a example
+        this.nickNames = new String[this.player];
+        for(int i=0; i<player; i++){
+            this.nickNames[i] = "Player "+ i;
         }
     }
 }

@@ -1,7 +1,9 @@
 package game;
 
+import java.util.ArrayList;
+
 public class Surface{
-    private Card[][] table;
+    private ArrayList<ArrayList<Card>> table;
     private Player[] players;
 
     /**
@@ -10,7 +12,7 @@ public class Surface{
      * Array of Players
      */
     public Surface(int amountOfPlayer){
-        table = new Card[4][6];
+        table = new ArrayList<ArrayList<Card>>();
         players= new Player[amountOfPlayer];
     }
 
@@ -19,9 +21,11 @@ public class Surface{
      *
      * @param tableCards
      */
-    public void initialTable(Card[] tableCards){
-        for(int i=0; i<4; i++){
-            this.table[i][0] = tableCards[i];
+    public void initialTable(ArrayList<Card> tableCards){
+        for(int i=0; i< tableCards.size(); i++){
+            ArrayList<Card> list= new ArrayList<Card>();
+            list.add(tableCards.get(i));
+            this.table.add(list);
         }
     }
 
@@ -31,7 +35,7 @@ public class Surface{
      * @param name
      * @param cards
      */
-    public void addPlayers(String name, Card[] cards){
+    public void addPlayers(String name, ArrayList<Card> cards){
         for(int i=0; i<players.length; i++){
             players[i] = new Player(name, cards);
         }
@@ -44,7 +48,7 @@ public class Surface{
      * Getter for table
      * @return  current cards on the table
      */
-    public Card[][] getTable(){
+    public ArrayList<ArrayList<Card>> getTable(){
         return table;
     }
 
@@ -56,7 +60,7 @@ public class Surface{
      * Setter for table
      * @param table
      */
-    public void setTable(Card[][] table){
+    public void setTable(ArrayList<ArrayList<Card>> table){
         this.table= table;
     }
 }
