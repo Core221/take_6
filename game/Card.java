@@ -15,7 +15,6 @@ public class Card{
 
         //individual amount of bulls is calculated
         String doubles = value+"";
-//        System.out.println((value/5)%2+"");
         points = 1;
         if(doubles.length()==1){
             if(doubles.charAt(0)=='5')points=2;
@@ -26,7 +25,6 @@ public class Card{
             else if(doubles.charAt(0) == doubles.charAt(1)) points = 5;
         }
         if(value==55)points=7;
-//        System.out.println(points);
     }
 
     public void draw(GraphicsContext g){

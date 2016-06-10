@@ -2,19 +2,36 @@ package game;
 
 public class Surface{
     private Card[][] table;
-    private Card[][] playerHand;
+    private Player[] players;
 
-    public Surface(){
-        table = new Card[4][6];
+    /**
+     * Constructor for Surface with components:
+     * Cards on the table
+     * Cards in the Hand of Player
+     */
+    public Surface(int amountOfPlayer){
+        table = new Card[4][5];
+        players= new Player[amountOfPlayer];
     }
 
-    public void initialTable(Card[] initialCards){
+    /**
+     * Function to initial the cards on the Table
+     * @param tableCards
+     */
+    public void initialTable(Card[] tableCards){
         for(int i=0; i<4; i++){
-            this.table[i][0] = initialCards[i];
+            this.table[i][0] = tableCards[i];
         }
     }
 
-    public void addPlayers(Card[][] hand){
-        this.playerHand = hand;
+    /**
+     * Function to add a Player
+     * @param name
+     * @param cards
+     */
+    public void addPlayers(String name, Card[] cards){
+        for(int i=0; i<players.length; i++){
+            players[i] = new Player(name, cards);
+        }
     }
 }

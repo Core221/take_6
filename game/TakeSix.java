@@ -27,27 +27,37 @@ public class TakeSix extends Application {
             stable.add(new Card(i+1));
         }
         //Start game and initial Table with rnd Cards
-        Surface surface = new Surface();
-        Card[] initialCards = new Card[4];
+        Surface surface = new Surface(this.player);
+        surface.initialTable(rndCards(4));
 
-        for(int i=0; i<4; i++){
-            int rnd = (int)(Math.random() * (104-i));
-            initialCards[i] = stable.get(rnd);
-            stable.remove(rnd);
-        }
-        surface.initialTable(initialCards);
         // Add Players to Game
-        Card[][] playerHand= new Card[player][10];
         for(int i= 0; i< this.player; i++){
-           for(int j=0; j<10; j++){
-               int rnd = (int)(Math.random() * (100-(i+j)));
-               playerHand[i][j] = stable.get(rnd);
-               stable.remove(rnd);
-           }
+            surface.addPlayers(nickNames[i],rndCards(10));
+        }
+    }
+
+    /**
+     * Gets n rnd choosen Cards from the stable and returns an Array
+     *
+     * @param amount    wished amount of cards
+     * @return Array of cards
+     */
+    public Card[] rndCards(int amount){
+        Card[] cards = new Card[amount];
+        for(int i=0; i<amount; i++){
+            int rnd = (int)(Math.random() * (stable.size()-i));
+            cards[i] = stable.get(rnd);
+            stable.remove(rnd);
         }
         surface.addPlayers(playerHand);
     }
 
+    /**
+     * Creates a star Menu in which you can choose the amount of Players
+     *
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Nimm 6!");
@@ -66,10 +76,16 @@ public class TakeSix extends Application {
         // End of placeholder button;
 
         Scene scene = new Scene(layout, 400,400);
+
         primaryStage.setScene(scene);
         primaryStage.show();
+        /* You can choose an amount of Players*/
 
         this.player=4; //Just a example
+        nickNames = new String[this.player];
+        for(int i=0;i<player;i++){
+            nickNames[i]= i+"";
+        }
     }
 
     private void draw() {
