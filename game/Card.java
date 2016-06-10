@@ -9,7 +9,7 @@ public class Card{
 
         this.value = value;
         String doubles = value+"";
-        if((value%5)==0 && value%10!=0)points=2;
+        if((value/5)points=2;
         else if((value%10)==0 && (value%5)!=0 )points=3;
         else if(doubles.length()==2) {
             if (doubles.charAt(0) == doubles.charAt(1)) points = 5;
