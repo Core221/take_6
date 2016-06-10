@@ -11,7 +11,7 @@ public class Card{
 
         //individual amount of bulls is calculated
         String doubles = value+"";
-       bulls = 1;
+        bulls = 1;
         if(doubles.length()==1){
             if(doubles.charAt(0)=='5')bulls=2;
         }
@@ -22,6 +22,8 @@ public class Card{
         }
         if(value==55)bulls=7;
     }
+
+    /*Getter & Setter*/
 
     public int getBulls(){
         return this.bulls;

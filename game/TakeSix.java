@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
 import java.util.ArrayList;
 
 public class TakeSix extends Application{
@@ -27,12 +26,22 @@ public class TakeSix extends Application{
 
         // Add Players to Game
         for(int i= 0; i< this.player; i++){
-            surface.addPlayers(nickNames[i],rndCards(10));
+            surface.addPlayers(this.nickNames[i],rndCards(10));
         }
+        // Play the game    ->(Jet just 1 Round)
+
+        Card[] choosenCards = new Card[this.player];
+        for(int i=0; i< this.player; i++){
+            /*Hier müsste die Kartenauswahl statt finden*/
+            choosenCards[i]= surface.getPlayers()[i].getCards()[0];     //Sind nur Beispiel Karten!!
+
+        }
+        surface.setTable(Function.playCards(surface.getTable(),choosenCards));  //update the current table in surface
+
     }
 
     /**
-     * Gets n rnd chosen Cards from the stable and returns an Array
+     * Gets n rnd chosen Cards from the stable and returns an Array of Cards
      *
      * @param amount    wished amount of cards
      * @return Array of cards
@@ -68,7 +77,7 @@ public class TakeSix extends Application{
         this.player=4; //Just a example
         nickNames = new String[this.player];
         for(int i=0;i<player;i++){
-            nickNames[i]= i+"";
+            nickNames[i]= "Player "+i;
         }
     }
 }

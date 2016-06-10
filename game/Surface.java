@@ -7,15 +7,16 @@ public class Surface{
     /**
      * Constructor for Surface with components:
      * Cards on the table
-     * Cards in the Hand of Player
+     * Array of Players
      */
     public Surface(int amountOfPlayer){
-        table = new Card[4][5];
+        table = new Card[4][6];
         players= new Player[amountOfPlayer];
     }
 
     /**
      * Function to initial the cards on the Table
+     *
      * @param tableCards
      */
     public void initialTable(Card[] tableCards){
@@ -26,6 +27,7 @@ public class Surface{
 
     /**
      * Function to add a Player
+     *
      * @param name
      * @param cards
      */
@@ -33,5 +35,28 @@ public class Surface{
         for(int i=0; i<players.length; i++){
             players[i] = new Player(name, cards);
         }
+    }
+
+
+    /*Getter & Setter */
+
+    /**
+     * Getter for table
+     * @return  current cards on the table
+     */
+    public Card[][] getTable(){
+        return table;
+    }
+
+    public Player[] getPlayers(){
+        return this.players;
+    }
+
+    /**
+     * Setter for table
+     * @param table
+     */
+    public void setTable(Card[][] table){
+        this.table= table;
     }
 }
