@@ -1,6 +1,5 @@
 package game;
 
-import java.util.ArrayList;
 
 /**
  * Created by jbuer on 10.06.2016.
@@ -10,7 +9,11 @@ public class Player {
     private Card[] hand_cards;
     private int bulls;
 
-
+    /**
+     * Constructor for Player
+     * @param name
+     * @param cards
+     */
     public Player(String name, Card[] cards){
         this.name = name;
         hand_cards= cards;

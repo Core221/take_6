@@ -32,7 +32,7 @@ public class TakeSix extends Application{
     }
 
     /**
-     * Gets n rnd choosen Cards from the stable and returns an Array
+     * Gets n rnd chosen Cards from the stable and returns an Array
      *
      * @param amount    wished amount of cards
      * @return Array of cards
@@ -48,14 +48,14 @@ public class TakeSix extends Application{
     }
 
     /**
-     * Creates a star Menu in which you can choose the amount of Players
+     * Creates a star menu in which you can choose the amount of Players and NickNames
      *
      * @param primaryStage
      * @throws Exception
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Nimm 6!");
+        primaryStage.setTitle("Take 6!");
 
         StackPane layout = new StackPane();
 
