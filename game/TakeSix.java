@@ -16,7 +16,7 @@ public class TakeSix extends Application{
     public TakeSix(){
         //Create a stable
         stable = new ArrayList<Card>();
-        for(int i=0; i<104; i++ ){
+        for(int i=0; i<104; i++){
             stable.add(new Card(i+1));
         }
         //Start game and initial Table with rnd Cards
@@ -24,8 +24,8 @@ public class TakeSix extends Application{
         Card[] initialCards = new Card[4];
 
         for(int i=0; i<4; i++){
-            int rnd = (int)(Math.random() * 104);
-            initialCards[4] = stable.get(rnd);
+            int rnd = (int)(Math.random() * (104-i));
+            initialCards[i] = stable.get(rnd);
             stable.remove(rnd);
         }
         surface.initialTable(initialCards);
