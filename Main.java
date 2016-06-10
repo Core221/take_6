@@ -1,4 +1,4 @@
-import game.Surface;
+import game.*;
 import javafx.application.Application;
 
 public class Main{

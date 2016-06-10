@@ -12,7 +12,7 @@ public class TakeSix extends Application{
 
     public TakeSix(){
         stable = new Card[104];
-        for(int i=0; i<104; i++ ){
+        for(int i=0; i<10; i++ ){
             stable[i] = new Card(i+1);
         }
     }
