@@ -48,27 +48,30 @@ public class TakeSix extends Application{
         System.out.printf("The Start Situation:\n");
         surface.toDraw();
 
-        // Play the game    ->(Jet just 1 Round)
+        // Play the game    ->(max 10 rounds possible)
+        for(int rounds=0; rounds < 10; rounds++){
 
-        Card[] choosenCards = new Card[this.player];
-        for(int i=0; i< this.player; i++) {
-            /*Hier müsste die Kartenauswahl statt finden*/
-            int decision = 9;
+            ArrayList<Card> choosenCards = new ArrayList<Card>();
+            for(int i=0; i< this.player; i++) {
+            /*Hier müsste die sinnvolle Kartenauswahl statt finden*/
+                int decision = 0;
             /*======*/
-            Card cardOfPlayer= surface.getPlayers().get(i).getCards().get(decision); //Sind nur Beispiel Karten!!
-            surface.getPlayers().get(i).getCards().remove(decision);
-            surface.getPlayers().get(i).setCards(surface.getPlayers().get(i).getCards());
-            choosenCards[i] = cardOfPlayer;
-        }
-        // Evaluate the position of Cards on table
-        Function.playCards(surface.getTable(),surface.getPlayers(),choosenCards);
-        //Update functions to refresh table and stats
-        surface.setTable(Function.updateTable());
-        surface.setPlayers(Function.updatePlayers());
+                Card cardOfPlayer= surface.getPlayers().get(i).getCards().get(decision); //Sind nur Beispiel Karten!!
+                surface.getPlayers().get(i).getCards().remove(decision);
+                surface.getPlayers().get(i).setCards(surface.getPlayers().get(i).getCards());
+                choosenCards.add(cardOfPlayer);
+            }
+            // Evaluate the position of Cards on table
+            Function.playCards(surface.getTable(),surface.getPlayers(),choosenCards);
+            //Update functions to refresh table and stats
+            surface.setTable(Function.updateTable());
+            surface.setPlayers(Function.updatePlayers());
 
         /*Ausgabe nach erster Runde*/
-        System.out.printf("\n\nRound 1:\n");
-        surface.toDraw();
+            System.out.printf("\n\nRound "+(rounds+1)+":\n");
+            surface.toDraw();
+        }
+
 
     }
 
@@ -89,7 +92,7 @@ public class TakeSix extends Application{
     }
 
     /**
-     * Creates a star menu in which you can choose the amount of Players and NickNames
+     * Creates a start menu in which you can choose the amount of Players and NickNames
      *
      * @param primaryStage
      * @throws Exception
