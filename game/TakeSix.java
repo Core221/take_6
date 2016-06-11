@@ -10,7 +10,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
 import java.util.ArrayList;
 
 public class TakeSix extends Application {
@@ -21,6 +20,13 @@ public class TakeSix extends Application {
     private Canvas canvas;
 
     public TakeSix(){
+        /*Example Values*/
+        this.player = 4; //Just a example
+        this.nickNames = new String[4];
+        for(int i=0; i<4; i++){
+            this.nickNames[i] = "Player "+ i;
+        }
+        /*=================*/
         //Create a stable
         stable = new ArrayList<Card>();
         for(int i=0; i<104; i++){
@@ -32,35 +38,62 @@ public class TakeSix extends Application {
 
         // Add Players to Game
         for(int i= 0; i< this.player; i++){
-            surface.addPlayers(nickNames[i],rndCards(10));
+            surface.addPlayers(this.nickNames[i],rndCards(10));
         }
+
+        /* Ausgabe des Startzustandes*/
+        System.out.printf("The Start Situation:\n");
+        surface.toDraw();
+
+        // Play the game    ->(Jet just 1 Round)
+
+        Card[] choosenCards = new Card[this.player];
+        for(int i=0; i< this.player; i++) {
+            /*Hier müsste die Kartenauswahl statt finden*/
+            int decision = 9;
+            /*======*/
+            Card cardOfPlayer= surface.getPlayers().get(i).getCards().get(decision); //Sind nur Beispiel Karten!!
+            surface.getPlayers().get(i).getCards().remove(decision);
+            surface.getPlayers().get(i).setCards(surface.getPlayers().get(i).getCards());
+            choosenCards[i] = cardOfPlayer;
+        }
+        // Evaluate the position of Cards on table
+        Function.playCards(surface.getTable(),surface.getPlayers(),choosenCards);
+        //Update functions to refresh table and stats
+        surface.setTable(Function.updateTable());
+        surface.setPlayers(Function.updatePlayers());
+
+        /*Ausgabe nach erster Runde*/
+        System.out.printf("\n\nRound 1:\n");
+        surface.toDraw();
+
     }
 
     /**
-     * Gets n rnd choosen Cards from the stable and returns an Array
+     * Gets n rnd chosen Cards from the stable and returns an Array of Cards
      *
      * @param amount    wished amount of cards
      * @return Array of cards
      */
-    public Card[] rndCards(int amount){
-        Card[] cards = new Card[amount];
+    public ArrayList<Card> rndCards(int amount){
+        ArrayList<Card> cards = new ArrayList<Card>();
         for(int i=0; i<amount; i++){
             int rnd = (int)(Math.random() * (stable.size()-i));
-            cards[i] = stable.get(rnd);
+            cards.add(stable.get(rnd));
             stable.remove(rnd);
         }
         surface.addPlayers(playerHand);
     }
 
     /**
-     * Creates a star Menu in which you can choose the amount of Players
+     * Creates a star menu in which you can choose the amount of Players and NickNames
      *
      * @param primaryStage
      * @throws Exception
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Nimm 6!");
+        primaryStage.setTitle("Take 6!");
 
         canvas = new Canvas();
         Pane container = new Pane(canvas);
@@ -78,14 +111,8 @@ public class TakeSix extends Application {
         Scene scene = new Scene(layout, 400,400);
 
         primaryStage.setScene(scene);
-        primaryStage.show();
-        /* You can choose an amount of Players*/
+       // primaryStage.show();
 
-        this.player=4; //Just a example
-        nickNames = new String[this.player];
-        for(int i=0;i<player;i++){
-            nickNames[i]= i+"";
-        }
     }
 
     private void draw() {
