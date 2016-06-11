@@ -1,7 +1,7 @@
+
 package game;
 
-
-import javafx.application.Application;
+        import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -10,15 +10,18 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
 import java.util.ArrayList;
 
-public class TakeSix extends Application {
+public class TakeSix extends Application{
     private ArrayList<Card> stable;
     private int player;
-
-    /** The games canvas. Is used to draw the game and retrieve width and height **/
+    private String[] nickNames;
     private Canvas canvas;
 
+    /**
+     * Constructor for Game TakeSix
+     */
     public TakeSix(){
         /*Example Values*/
         this.player = 4; //Just a example
@@ -28,7 +31,7 @@ public class TakeSix extends Application {
         }
         /*=================*/
         //Create a stable
-        stable = new ArrayList<Card>();
+        stable = new ArrayList<>();
         for(int i=0; i<104; i++){
             stable.add(new Card(i+1));
         }
@@ -76,13 +79,13 @@ public class TakeSix extends Application {
      * @return Array of cards
      */
     public ArrayList<Card> rndCards(int amount){
-        ArrayList<Card> cards = new ArrayList<Card>();
+        ArrayList<Card> cards = new ArrayList<>();
         for(int i=0; i<amount; i++){
             int rnd = (int)(Math.random() * (stable.size()-i));
             cards.add(stable.get(rnd));
             stable.remove(rnd);
         }
-        surface.addPlayers(playerHand);
+        return cards;
     }
 
     /**
@@ -111,7 +114,7 @@ public class TakeSix extends Application {
         Scene scene = new Scene(layout, 400,400);
 
         primaryStage.setScene(scene);
-       // primaryStage.show();
+        primaryStage.show();
 
     }
 

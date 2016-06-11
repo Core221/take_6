@@ -29,8 +29,9 @@ public class Card{
 
     /*Getter & Setter*/
 
-    public int getBulls(){
+    public int getBulls() {
         return this.bulls;
+    }
     public void draw(GraphicsContext g){
         //Example
         g.fillRect(x, y, 20D, 80D);
