@@ -48,10 +48,10 @@ public class Function{
             }
         }
         //Set the card
+        int bulls= 0;
         if(index!=-1){  //Case Card can be placed
             table.get(index).add(card);
             if(table.get(index).size()>5){
-                int bulls= 0;
                 for(int i=0; i< 5; i++){       //Count the bulls on Card and remove card 1-5 from table
                     bulls+= table.get(index).get(0).getBulls();
                     table.get(index).remove(0);
@@ -59,7 +59,15 @@ public class Function{
                 players.get(playerIndex).setBulls(bulls+players.get(playerIndex).getBulls());   //Add the bulls to player stats
             }
         }else{  //Case Card cannot be placed cause its value is too small
-            /*Da hatte ich echt kein bock mehr :'D*/
+            /*Player has to make a choice*/
+            int playerchoice= 0;
+            /*===========================*/
+            table.get(playerchoice).add(card);
+            for(int i=0; i<table.get(playerchoice).size(); i++){
+                bulls+= table.get(playerchoice).get(0).getBulls();
+                table.get(playerchoice).remove(0);
+            }
+            players.get(playerIndex).setBulls(bulls+players.get(playerIndex).getBulls());
         }
     }
 

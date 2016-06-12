@@ -1,7 +1,7 @@
 
 package game;
 
-        import javafx.application.Application;
+import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -41,7 +41,7 @@ public class TakeSix extends Application{
 
         // Add Players to Game
         for(int i= 0; i< this.player; i++){
-            surface.addPlayers(this.nickNames[i],rndCards(10));
+            surface.addPlayers(this.nickNames[i]+1,rndCards(10));
         }
 
         /* Ausgabe des Startzustandes*/
@@ -67,7 +67,7 @@ public class TakeSix extends Application{
             surface.setTable(Function.updateTable());
             surface.setPlayers(Function.updatePlayers());
 
-        /*Ausgabe nach erster Runde*/
+        /*Ausgabe nach Runde*/
             System.out.printf("\n\nRound "+(rounds+1)+":\n");
             surface.toDraw();
         }
@@ -125,5 +125,9 @@ public class TakeSix extends Application{
         GraphicsContext g = canvas.getGraphicsContext2D();
         g.setFill(Color.RED);
         g.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+    }
+
+    public void playerAction(){
+        System.out.printf("Hallo world");
     }
 }
