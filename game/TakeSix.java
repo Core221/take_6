@@ -127,7 +127,4 @@ public class TakeSix extends Application{
         g.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
     }
 
-    public void playerAction(){
-        System.out.printf("Hallo world");
-    }
 }
