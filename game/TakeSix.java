@@ -27,7 +27,7 @@ public class TakeSix extends Application{
         this.player = 4; //Just a example
         this.nickNames = new String[4];
         for(int i=0; i<4; i++){
-            this.nickNames[i] = "Player "+ i;
+            this.nickNames[i] = "Player "+ (i+1);
         }
         /*=================*/
         //Create a stable
@@ -41,7 +41,7 @@ public class TakeSix extends Application{
 
         // Add Players to Game
         for(int i= 0; i< this.player; i++){
-            surface.addPlayers(this.nickNames[i]+1,rndCards(10));
+            surface.addPlayers(this.nickNames[i],rndCards(10));
         }
 
         /* Ausgabe des Startzustandes*/
