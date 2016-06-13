@@ -24,6 +24,12 @@ public class Player {
         
     }
 
+    public Card chooseCard(){
+        Card chosen= hand_cards.get(0);
+        hand_cards.remove(0);
+        return chosen;
+    }
+
     /*Getter & Setter*/
 
     /**

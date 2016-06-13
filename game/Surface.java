@@ -11,7 +11,7 @@ public class Surface{
      * Cards on the table
      * Array of Players
      */
-    public Surface(int amountOfPlayer){
+    public Surface(){
         table = new ArrayList<ArrayList<Card>>();
         players= new ArrayList<Player>();
     }
